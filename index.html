@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrintLab — Impresión 3D personalizada en Santa Rosa</title>
+  <meta name="description" content="PrintLab: figuras, dragones articulados, llaveros y pasañuelos personalizados impresos en 3D. Diseño a medida y entrega en Santa Rosa, La Pampa.">
+  <meta name="theme-color" content="#05060f">
+  <meta property="og:title" content="PrintLab — Impresión 3D personalizada">
+  <meta property="og:description" content="Figuras, dragones articulados, llaveros y pasañuelos a medida. Santa Rosa, La Pampa.">
+  <meta property="og:image" content="img/og-logo.png">
+  <link rel="icon" href="img/logo-96.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor is-hidden" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#top" aria-label="PrintLab, inicio">
+      <img class="logo-img" src="img/logo-96.webp" alt="" width="40" height="40">
+      <span>PRINT<b>LAB</b></span>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#galeria">Trabajos</a></li>
+        <li><a href="#materiales">Materiales</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#contacto" class="btn btn-sm">Pedí el tuyo</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-floor" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="tag reveal"><span class="pulse"></span> Diseño · Impresión 3D · Innovación</p>
+        <h1 class="hero-title reveal">
+          <span class="glitch" data-text="Tu idea,">Tu idea,</span>
+          <span class="grad">impresa en 3D.</span>
+        </h1>
+        <p class="hero-sub reveal">Figuras, dragones articulados, llaveros y pasañuelos hechos a tu medida. Nos contás la idea (o nos mandás una foto), la diseñamos y la imprimimos capa por capa en Santa Rosa, La Pampa.</p>
+        <div class="hero-cta reveal">
+          <a href="#contacto" class="btn btn-primary magnetic">Crea tu figura <span aria-hidden="true">→</span></a>
+          <a href="#galeria" class="btn btn-ghost">Ver trabajos</a>
+        </div>
+        <dl class="hero-stats reveal">
+          <div><dt>Llaveros desde</dt><dd>$<span class="count" data-to="3000">0</span></dd></div>
+          <div><dt>Personalizado</dt><dd><span class="count" data-to="100">0</span>%</dd></div>
+          <div><dt>Entrega</dt><dd>Santa Rosa</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="holo-frame">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <canvas id="hologram"></canvas>
+          <div class="holo-hud">
+            <span>TU_IDEA.STL</span>
+            <span class="hud-layer">CAPA <b id="layerNum">000</b>/240</span>
+          </div>
+          <div class="holo-bar"><i id="layerBar"></i></div>
+        </div>
+      </div>
+
+      <a href="#proceso" class="scroll-hint" aria-label="Bajar a la sección Proceso"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Figuras</span><i>✦</i><span>Dragones articulados</span><i>✦</i><span>Llaveros</span><i>✦</i><span>Pasañuelos scout</span><i>✦</i><span>Regalos</span><i>✦</i><span>Diseño a medida</span><i>✦</i>
+        <span>Figuras</span><i>✦</i><span>Dragones articulados</span><i>✦</i><span>Llaveros</span><i>✦</i><span>Pasañuelos scout</span><i>✦</i><span>Regalos</span><i>✦</i><span>Diseño a medida</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- PROCESO -->
+    <section class="section" id="proceso">
+      <header class="section-head reveal">
+        <p class="kicker">// 01 — Proceso</p>
+        <h2>De tu idea a tus manos en <span class="grad">4 pasos</span></h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="26" rx="4"/><circle cx="24" cy="25" r="7"/><path d="M16 12l3-5h10l3 5"/><circle class="blink" cx="36" cy="18" r="1.6"/></svg>
+          </div>
+          <span class="step-num">01</span>
+          <h3>Nos contás la idea</h3>
+          <p>Mandanos una foto, un dibujo o simplemente contanos qué querés.</p>
+        </li>
+        <li class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M24 5l16 9v20l-16 9-16-9V14z"/><path d="M8 14l16 9 16-9M24 23v20"/><line class="scan" x1="6" y1="10" x2="42" y2="10"/></svg>
+          </div>
+          <span class="step-num">02</span>
+          <h3>Diseño y presupuesto</h3>
+          <p>Armamos el diseño 3D y te pasamos el precio según material y tiempo de impresión.</p>
+        </li>
+        <li class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M6 8h36M10 8v6h28V8"/><path class="nozzle" d="M21 14h6l-3 6z"/><rect x="12" y="34" width="24" height="4"/><rect class="layer l1" x="16" y="30" width="16" height="3"/><rect class="layer l2" x="18" y="26" width="12" height="3"/><path d="M6 42h36"/></svg>
+          </div>
+          <span class="step-num">03</span>
+          <h3>Impresión</h3>
+          <p>Se imprime capa por capa y, si lleva, se pintan los detalles a mano.</p>
+        </li>
+        <li class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="12" cy="34" r="7"/><circle cx="36" cy="34" r="7"/><path d="M12 34l8-14h10l6 14M20 20l-3-6h-4M30 20l3-8h4"/><path class="check" d="M19 34l4 3 7-7"/></svg>
+          </div>
+          <span class="step-num">04</span>
+          <h3>Entrega</h3>
+          <p>En Santa Rosa te lo llevamos nosotros, en bici. Para otras localidades, consultanos.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section" id="galeria">
+      <header class="section-head reveal">
+        <p class="kicker">// 02 — Trabajos</p>
+        <h2>Salidas del <span class="grad">laboratorio</span></h2>
+        <p class="lead">Piezas reales que imprimimos. Pasá el mouse (o tocá) para verlas de cerca.</p>
+      </header>
+      <div class="filters reveal" role="group" aria-label="Filtrar trabajos">
+        <button class="chip is-active" data-filter="all" aria-pressed="true">Todos</button>
+        <button class="chip" data-filter="figuras" aria-pressed="false">Figuras</button>
+        <button class="chip" data-filter="dragones" aria-pressed="false">Dragones</button>
+        <button class="chip" data-filter="llaveros" aria-pressed="false">Llaveros</button>
+        <button class="chip" data-filter="scout" aria-pressed="false">Scout</button>
+      </div>
+      <div class="gallery">
+        <figure class="card tilt reveal tall" data-cat="figuras" style="--c1:#ff3b5c">
+          <div class="card-media"><img style="object-position:50% 70%" src="img/figura-heroe.webp" alt="Figura chibi de un superhéroe con campera negra, pintada a mano" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Héroe chibi</span><small>Pintado a mano</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="dragones" style="--c1:#22c8ff">
+          <div class="card-media"><img src="img/dragon-blanco.webp" alt="Dragón blanco de ojos celestes impreso en 3D" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Dragón blanco</span><small>Ojos pintados a mano</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="dragones" style="--c1:#7b5cff">
+          <div class="card-media"><img src="img/dragon-articulado.webp" alt="Dragón articulado negro largo sobre una madera" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Dragón articulado</span><small>Piezas móviles · 1 sola impresión</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="scout" style="--c1:#d4b44a">
+          <div class="card-media"><img src="img/pasanuelo-ciervo.webp" alt="Pasañuelo scout negro con cabeza de ciervo pintada en dorado" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Pasañuelo ciervo</span><small>Detalles en dorado</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="llaveros" style="--c1:#22c8ff">
+          <div class="card-media"><img src="img/llavero-printlab.webp" alt="Llavero redondo con el logo de PrintLab" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Llavero PrintLab</span><small>Multicolor</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal tall" data-cat="figuras" style="--c1:#e8ecff">
+          <div class="card-media"><img style="object-position:50% 60%" src="img/figura-guerrero.webp" alt="Figura blanca de un guerrero de anime musculoso" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Guerrero anime</span><small>Listo para pintar</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="dragones" style="--c1:#3dff8a">
+          <div class="card-media"><img src="img/dragon-en-mano.webp" alt="Dragón negro chiquito de ojos verdes apoyado en un dedo" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Dragón de bolsillo</span><small>Articulado · mini</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="llaveros" style="--c1:#ff3b5c">
+          <div class="card-media"><img src="img/llavero-arana.webp" alt="Llavero rojo y negro con forma de araña" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Llavero araña</span><small>Bicolor</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="scout" style="--c1:#ff3b5c">
+          <div class="card-media"><img src="img/pasanuelo-rs.webp" alt="Pasañuelo scout rojo con las iniciales RS en relieve" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Pasañuelo RS</span><small>Iniciales en relieve</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="llaveros" style="--c1:#ff8a3d">
+          <div class="card-media"><img src="img/llavero-camion.webp" alt="Llavero con forma de camión naranja, negro y blanco" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Llavero camión</span><small>Diseño a pedido</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="llaveros" style="--c1:#ff3b5c">
+          <div class="card-media"><img src="img/llavero-escudo.webp" alt="Llavero con escudo de club de fútbol rojo y blanco" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Escudo de tu club</span><small>Multicolor</small></figcaption>
+        </figure>
+        <figure class="card tilt reveal" data-cat="llaveros" style="--c1:#ffd400">
+          <div class="card-media"><img src="img/llavero-camiseta.webp" alt="Llavero con forma de camiseta azul y amarilla con nombre y número 5" loading="lazy" width="720" height="960"></div>
+          <figcaption><span>Camiseta con tu nombre</span><small>Nombre y número a elección</small></figcaption>
+        </figure>
+        <a class="card card-cta reveal" href="#contacto" data-cat="all" style="--c1:#c13cff">
+          <span class="cta-plus" aria-hidden="true">+</span>
+          <span class="cta-title">Tu idea acá</span>
+          <span class="cta-sub">Mandanos una foto y la diseñamos</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- MATERIALES -->
+    <section class="section" id="materiales">
+      <header class="section-head reveal">
+        <p class="kicker">// 03 — Materiales</p>
+        <h2>Materiales y <span class="grad">acabados</span></h2>
+      </header>
+      <div class="materials">
+        <article class="mat reveal" style="--c1:#22c8ff">
+          <div class="mat-swatch"></div>
+          <h3>Un color</h3>
+          <p>La pieza sale del color del filamento: blanco, negro, rojo, azul y más. Ideal para figuras que después querés pintar.</p>
+          <ul class="meter" aria-label="Nivel de detalle: 3 de 5"><li></li><li></li><li></li><li class="off"></li><li class="off"></li></ul>
+        </article>
+        <article class="mat reveal" style="--c1:#c13cff">
+          <div class="mat-swatch"></div>
+          <h3>Multicolor</h3>
+          <p>Capas de distintos colores en la misma pieza. Así salen los llaveros de escudos, camisetas y logos.</p>
+          <ul class="meter" aria-label="Nivel de detalle: 4 de 5"><li></li><li></li><li></li><li></li><li class="off"></li></ul>
+        </article>
+        <article class="mat reveal" style="--c1:#3dff8a">
+          <div class="mat-swatch"></div>
+          <h3>Articulado</h3>
+          <p>Piezas que se mueven, impresas de una sola vez y sin pegamento. Como nuestros dragones.</p>
+          <ul class="meter" aria-label="Nivel de detalle: 5 de 5"><li></li><li></li><li></li><li></li><li></li></ul>
+        </article>
+      </div>
+      <div class="finishes reveal">
+        <h3 class="finishes-title">Acabados</h3>
+        <ul>
+          <li><b>Pintado a mano</b><span>Ojos, caras y detalles con pincel.</span></li>
+          <li><b>Detalles metalizados</b><span>Dorado o plateado, como el pasañuelo ciervo.</span></li>
+          <li><b>Relieve</b><span>Iniciales, nombres o logos en alto relieve.</span></li>
+          <li><b>Sin pintar</b><span>Para quienes prefieren pintarlo por su cuenta.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS
+         IMPORTANTE: estos textos son EJEMPLOS. Antes de publicar la página,
+         cambialos por mensajes reales de tus clientes (con su permiso). -->
+    <section class="section" id="testimonios">
+      <header class="section-head reveal">
+        <p class="kicker">// 04 — Clientes</p>
+        <h2>Lo que dicen <span class="grad">quienes ya tienen el suyo</span></h2>
+      </header>
+      <div class="testimonials">
+        <blockquote class="quote reveal">
+          <p>“[Ejemplo] Le regalé el dragón articulado a mi hijo y no lo suelta. Se mueve todo, increíble.”</p>
+          <footer><span class="avatar" aria-hidden="true">C1</span><cite>Nombre del cliente<small>Santa Rosa</small></cite></footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“[Ejemplo] Pedimos los pasañuelos para toda la unidad scout. Quedaron perfectos y llegaron a tiempo.”</p>
+          <footer><span class="avatar" aria-hidden="true">C2</span><cite>Nombre del cliente<small>Santa Rosa</small></cite></footer>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“[Ejemplo] Le mandé una foto de mi camión y me hizo el llavero igualito. Me lo trajo a casa.”</p>
+          <footer><span class="avatar" aria-hidden="true">C3</span><cite>Nombre del cliente<small>Santa Rosa</small></cite></footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="section" id="precios">
+      <header class="section-head reveal">
+        <p class="kicker">// 05 — Precios</p>
+        <h2>Precios <span class="grad">claros</span></h2>
+        <p class="lead">Cada pedido es distinto: el precio depende del material y del tiempo de impresión. Primero definimos tu idea, armamos el diseño y te pasamos el presupuesto con todos los valores.</p>
+      </header>
+      <div class="pricing">
+        <article class="plan reveal">
+          <h3>Llavero</h3>
+          <p class="price">$3.000</p>
+          <ul>
+            <li>Modelos de nuestro catálogo</li>
+            <li>Multicolor</li>
+            <li>Argolla incluida</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost" data-plan="Llavero común">Pedir llavero</a>
+        </article>
+        <article class="plan plan-featured reveal">
+          <span class="badge">Más pedido</span>
+          <h3>Llavero personalizado</h3>
+          <p class="price">$4.000</p>
+          <ul>
+            <li>Diseño a partir de tu idea</li>
+            <li>Tu nombre, escudo, logo o vehículo</li>
+            <li>Multicolor</li>
+          </ul>
+          <a href="#contacto" class="btn btn-primary" data-plan="Llavero personalizado">Diseñar el mío</a>
+        </article>
+        <article class="plan reveal">
+          <h3>A medida</h3>
+          <p class="price price-text"><small>figuras, dragones, pasañuelos</small>A presupuesto</p>
+          <ul>
+            <li>Diseño 3D a partir de tu idea o foto</li>
+            <li>Pintado a mano si lo pedís</li>
+            <li>Precio según tamaño y material</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost" data-plan="Pedido a medida">Pedir presupuesto</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="contact reveal">
+        <div class="contact-copy">
+          <p class="kicker">// 06 — Contacto</p>
+          <h2>Empecemos <span class="grad">tu pedido</span></h2>
+          <p class="lead">Completá esto y se abre WhatsApp con el mensaje listo. Después mandanos por ahí las fotos o ideas que tengas.</p>
+          <a class="phone" href="tel:+5492954239121">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            02954 23-9121
+          </a>
+        </div>
+        <form class="form" id="orderForm" novalidate>
+          <label class="field">
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" autocomplete="name" required placeholder="Juan">
+          </label>
+          <label class="field">
+            <span>¿Qué querés?</span>
+            <select name="tipo">
+              <option>Un llavero</option>
+              <option>Una figura</option>
+              <option>Un dragón articulado</option>
+              <option>Pasañuelos scout</option>
+              <option>Otra idea</option>
+            </select>
+          </label>
+          <label class="field field-full">
+            <span>Opción</span>
+            <select name="plan" id="planSelect">
+              <option>Llavero común</option>
+              <option selected>Llavero personalizado</option>
+              <option>Pedido a medida</option>
+              <option>No sé todavía</option>
+            </select>
+          </label>
+          <label class="field field-full">
+            <span>Contanos la idea</span>
+            <textarea name="idea" rows="3" placeholder="Ej: un llavero con el escudo de mi club y mi nombre"></textarea>
+          </label>
+          <button class="btn btn-primary magnetic field-full" type="submit">Enviar por WhatsApp <span aria-hidden="true">→</span></button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="img/logo-320.webp" alt="Logo de PrintLab" width="120" height="120" loading="lazy">
+        <p class="footer-tag">Diseño · Impresión 3D · Innovación.<br>Hecho en Santa Rosa, La Pampa.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/5492954239121" target="_blank" rel="noopener">WhatsApp: 02954 23-9121</a></li>
+          <li><a href="tel:+5492954239121">Llamar</a></li>
+          <li>Santa Rosa, La Pampa</li>
+          <li>Entregas en bici dentro de la ciudad</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <!-- Cambiá estos links por los perfiles reales de PrintLab -->
+        <ul class="socials">
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></li>
+          <li><a href="https://wa.me/5492954239121" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a4 4 0 0 1-2-2l1-1-1-2z"/></svg></a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 5 5.5 5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© <span id="year">2026</span> PrintLab · Santa Rosa, La Pampa</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
